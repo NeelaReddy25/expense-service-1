@@ -52,10 +52,10 @@ systemctl enable backend &>>$LOGFILE
 VALIDATE $? "Enabling backend"
 
 dnf install mysql -y &>>$LOGFILE
-VALIDATE $? "Installing backend"
-
-mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOGFILE
 VALIDATE $? "Installing MYSQL client"
+
+mysql -h db.neelareddy.store -u root -p${mysql_root_password} < /app/schema/backend.sql &>>$LOGFILE
+VALIDATE $? "Schema loading"
 
 systemctl restart backend &>>$LOGFILE
 VALIDATE $? "Restarting backend"
