@@ -23,7 +23,7 @@ mysql -h db.neelareddy.store -u root -p${mysql_root_password} -e 'show databases
 if [$? -ne 0 ]
 then 
     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
+    VALIDATE $? "MYSQL Root Password setup"
 else
     echo -e "MYSQL Root password is already seutp...$Y SKIPPING $N"
-    VALIDATE $? "MYSQL Root Password setup"
 fi          
