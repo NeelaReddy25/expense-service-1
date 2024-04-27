@@ -24,6 +24,6 @@ if [$? -ne 0 ]
 then 
     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
 else
-    echo "MYSQL Root password is already seutp...$Y SKIPPING $N"
+    echo -e "MYSQL Root password is already seutp...$Y SKIPPING $N"
     VALIDATE $? "MYSQL Root Password setup"
 fi          
