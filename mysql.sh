@@ -20,7 +20,7 @@ VALIDATE $? "Starting MYSQL"
 # VALIDATE $? "MYSQL root password secure"
 
 mysql -h db.neelareddy.store -u root -p${mysql_root_password} -e 'show databases;' &>>$LOGFILE
-if [$? -ne 0 ]
+if [ $? -ne 0 ]
 then 
     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$LOGFILE
     VALIDATE $? "MYSQL Root Password setup"
